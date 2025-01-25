@@ -10,9 +10,10 @@
   icon: "fas fa-envelope"
   noblank: true # open link in current tab
 
-- type: rss
-  icon: "fas fa-rss"
+- type: Linkedin
+  icon: "fab fa-linkedin"
   noblank: true
+  url: "https://www.linkedin.com/in/djamel-mesbah"
 # Uncomment and complete the url below to enable more contact options
 #
 # - type: mastodon
