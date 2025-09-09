@@ -1,3 +1,10 @@
+---
+layout: post
+title: "Nbdistributed – Distributed Training Without Losing Your Sanity"
+date: 2025-09-09 10:00:00 +0200
+categories: [distributed, pytorch, llms]
+---
+
 # Nbdistributed - Introduction and Basic Operations
 
 ## Why Distributed Training Matters
@@ -49,7 +56,7 @@ First Make sure to install nbdistributed using :
 
 Then : 
 
-![image.png](Nbdistributed%20-%20Introduction%20and%20Basic%20Operations%20269c81785407803e85c1e9c471a0a3c2/image.png)
+![image.png](/assets/img/nbdistributed/image.png)
 
 - This launches two processes, mapped to GPU 3 and GPU 4.
 - GPU indexing is resolved by **hardware generation order** (you can check via `nvidia-smi`).
@@ -97,7 +104,7 @@ Broadcast sends a tensor from one rank (the *source*) to all others.
 
 Each receiving rank must allocate memory before the operation:
 
-![image.png](Nbdistributed%20-%20Introduction%20and%20Basic%20Operations%20269c81785407803e85c1e9c471a0a3c2/image%201.png)
+![image.png](/assets/img/nbdistributed/image%201.png)
 
 Rank 1’s tensor received Rank 0’s tensor. 
 
@@ -107,7 +114,7 @@ Rank 1’s tensor received Rank 0’s tensor.
     
     The program stalls until the transfer completes.
     
-    ![image.png](Nbdistributed%20-%20Introduction%20and%20Basic%20Operations%20269c81785407803e85c1e9c471a0a3c2/image%202.png)
+    ![image.png](/assets/img/nbdistributed/image%202.png)
     
 - **Asynchronous send/receive**: operations return immediately, allowing overlap with other computation.
     
@@ -120,7 +127,7 @@ Rank 1’s tensor received Rank 0’s tensor.
 
 Splits a tensor into chunks and distributes each chunk to a different ra
 
-![image.png](Nbdistributed%20-%20Introduction%20and%20Basic%20Operations%20269c81785407803e85c1e9c471a0a3c2/image%203.png)
+![image.png](/assets/img/nbdistributed/image%203.png)
 
 By the way, data type or tensor shapes mismatches between ranks will cause a system crash.
 
@@ -133,7 +140,7 @@ Reduction aggregates tensors across ranks into one result.
 
 Example (sum reduction):
 
-![image.png](Nbdistributed%20-%20Introduction%20and%20Basic%20Operations%20269c81785407803e85c1e9c471a0a3c2/image%204.png)
+![image.png](/assets/img/nbdistributed/image%204.png)
 
 There are other ops for the reduce mapping including MAX, MIN and PRODUCT. 
 
@@ -183,7 +190,7 @@ There are two types of gather operations :
 - **Gather:** collects tensors from all ranks into one rank.
 - **All-gather:** collects tensors from all ranks into **every** rank.
 
-![image.png](Nbdistributed%20-%20Introduction%20and%20Basic%20Operations%20269c81785407803e85c1e9c471a0a3c2/image%205.png)
+![image.png](/assets/img/nbdistributed/image%205.png)
 
 ## Performance Notes
 
