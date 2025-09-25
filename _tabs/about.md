@@ -20,4 +20,4 @@ Hey there! I’m a **PhD student** focused on detecting code smells with  **Deep
 - **Research Insights**: Thoughts on code quality, ML techniques, and whatever new rabbit hole my PhD journey leads me down.  
 - **Project Demos**: Showcasing tools, prototypes, and experiments that (hopefully) make your life a bit easier.  
 
-Thanks for stopping by, and feel free to poke around. If you share my obsession with machine learning, building things, and making code a little less smelly, let’s connect!
+Thanks for stopping by. If you share my obsession with machine learning, building things and making code a little less smelly, let’s connect !
