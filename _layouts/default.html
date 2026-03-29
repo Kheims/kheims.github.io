@@ -4,10 +4,6 @@ layout: compress
 
 <!DOCTYPE html>
 
-<script>
-  const apiUrl = "{{ site.env.API_URL }}";
-</script>
-
 {% include origin-type.html %} {% include lang.html %} {% if site.theme_mode %}
 {% capture prefer_mode %}data-mode="{{ site.theme_mode }}"{% endcapture %} {%
 endif %}
@@ -20,9 +16,6 @@ endif %}
   }}
 >
   {% include head.html %} {% include mathjax_support.html %}
-  <!-- Adsense AMP -->
-  <amp-auto-ads type="adsense" data-ad-client="ca-pub-4445781280689625">
-  </amp-auto-ads>
 
   <body>
     {% include sidebar.html lang=lang %}
