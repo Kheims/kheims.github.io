@@ -1,169 +1,37 @@
-# The Site Configuration
+title: Djamel Mesbah
+tagline: PhD candidate · deep learning, code, ML systems
+description: >-
+  Notes on deep learning, distributed training, ML systems, and software
+  engineering. PhD research on automated code quality assessment.
 
-# Import the theme
-theme: jekyll-theme-chirpy
-
-# The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
-# If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
-# otherwise, the layout language will use the default value of 'en'.
+url: "https://kheims.github.io"
+baseurl: ""
 lang: en
-
-# Change to your timezone › https://kevinnovak.github.io/Time-Zone-Picker
 timezone: Europe/Paris
 
-# jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
-# ↓ --------------------------
-
-title: Djamel Mesbah # the main title
-
-tagline: PhD Candidate DeepLearning/Software Engineering # it will display as the subtitle
-
-description: >- # used by seo meta and the atom feed
-  Technical blog on deep learning, distributed training, ML systems, and software engineering.
-
-# Fill in the protocol & hostname for your site.
-# E.g. 'https://username.github.io', note that it does not end with a '/'.
-url: "https://kheims.github.io"
-
-github:
-  username: kheims # change to your GitHub username
-
-twitter:
-  username: # change to your Twitter username
+author:
+  name: Djamel Mesbah
+  email: djamelmesbah141@gmail.com
 
 social:
-  # Change to your full name.
-  # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: Djamel Mesbah
-  email: djamelmesbah141@gmail.com # change to your email address
-  links:
-    # The first element serves as the copyright owner's link
-    - https://github.com/kheims # change to your GitHub homepage
-    # Uncomment below to add more social links
-    # - https://www.facebook.com/username
-    - https://www.linkedin.com/in/djamel-mesbah
+  github: kheims
+  linkedin: djamel-mesbah
+  scholar:
+  email: djamelmesbah141@gmail.com
 
-# Site Verification Settings
-webmaster_verifications:
-  google: # fill in your Google verification code
-  bing: # fill in your Bing verification code
-  alexa: # fill in your Alexa verification code
-  yandex: # fill in your Yandex verification code
-  baidu: # fill in your Baidu verification code
-  facebook: # fill in your Facebook verification code
+plugins:
+  - jekyll-archives
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-feed
 
-# ↑ --------------------------
-# The end of `jekyll-seo-tag` settings
-
-# Web Analytics Settings
-analytics:
-  google:
-    id: # fill in your Google Analytics ID
-  goatcounter:
-    id: # fill in your GoatCounter ID
-  umami:
-    id: # fill in your Umami ID
-    domain: # fill in your Umami domain
-  matomo:
-    id: # fill in your Matomo ID
-    domain: # fill in your Matomo domain
-  cloudflare:
-    id: # fill in your Cloudflare Web Analytics token
-  fathom:
-    id: # fill in your Fathom Site ID
-
-# Page views settings
-pageviews:
-  provider: # now only supports 'goatcounter'
-
-# Prefer color scheme setting.
-#
-# Note: Keep empty will follow the system prefer color by default,
-# and there will be a toggle to switch the theme between dark and light
-# on the bottom left of the sidebar.
-#
-# Available options:
-#
-#     light — Use the light color scheme
-#     dark — Use the dark color scheme
-#
-theme_mode: # [light | dark]
-
-# The CDN endpoint for media resources.
-# Notice that once it is assigned, the CDN url
-# will be added to all media resources (site avatar, posts' images, audio and video files) paths starting with '/'
-#
-# e.g. 'https://cdn.com'
-cdn:
-
-# the avatar on sidebar, support local or CORS resources
-avatar: https://avatars.githubusercontent.com/u/46005652?s=400&u=eec1ead62a03a19dfc2403938308fe0c8a23c8ab&v=4
-
-# The URL of the site-wide social preview image used in SEO `og:image` meta tag.
-# It can be overridden by a customized `page.image` in front matter.
-social_preview_image: # string, local or CORS resources
-
-# boolean type, the global switch for TOC in posts.
-toc: true
-
-comments:
-  # Global switch for the post-comment system. Keeping it empty means disabled.
-  provider: # [disqus | utterances | giscus]
-  # The provider options are as follows:
-  disqus:
-    shortname: # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
-  # utterances settings › https://utteranc.es/
-  utterances:
-    repo: # <gh-username>/<repo>
-    issue_term: # < url | pathname | title | ...>
-  # Giscus options › https://giscus.app
-  giscus:
-    repo: # <gh-username>/<repo>
-    repo_id:
-    category:
-    category_id:
-    mapping: # optional, default to 'pathname'
-    strict: # optional, default to '0'
-    input_position: # optional, default to 'bottom'
-    lang: # optional, default to the value of `site.lang`
-    reactions_enabled: # optional, default to the value of `1`
-
-# Self-hosted static assets, optional › https://github.com/cotes2020/chirpy-static-assets
-assets:
-  self_host:
-    enabled: # boolean, keep empty means false
-    # specify the Jekyll environment, empty means both
-    # only works if `assets.self_host.enabled` is 'true'
-    env: # [development | production]
-
-pwa:
-  enabled: true # The option for PWA feature (installable)
-  cache:
-    enabled: true # The option for PWA offline cache
-    # Paths defined here will be excluded from the PWA cache.
-    # Usually its value is the `baseurl` of another website that
-    # shares the same domain name as the current website.
-    deny_paths:
-      # - "/example"  # URLs match `<SITE_URL>/example/*` will not be cached by the PWA
-
-paginate: 10
-
-# The base URL of your site
-baseurl: ""
-
-# ------------ The following options are not recommended to be modified ------------------
-
+markdown: kramdown
 kramdown:
-  footnote_backlink: "&#8617;&#xfe0e;"
   syntax_highlighter: rouge
-  syntax_highlighter_opts: # Rouge Options › https://github.com/jneen/rouge#full-options
+  syntax_highlighter_opts:
     css_class: highlight
-    # default_lang: console
-    span:
-      line_numbers: false
     block:
-      line_numbers: true
-      start_line: 1
+      line_numbers: false
 
 collections:
   tabs:
@@ -172,54 +40,50 @@ collections:
 
 defaults:
   - scope:
-      path: "" # An empty string here means all files in the project
+      path: ""
       type: posts
     values:
       layout: post
-      comments: true # Enable comments in posts.
-      toc: true # Display TOC column in posts.
-      # DO NOT modify the following parameter unless you are confident enough
-      # to update the code of all other post links in this project.
       permalink: /posts/:title/
   - scope:
-      path: _drafts
-    values:
-      comments: false
-  - scope:
       path: ""
-      type: tabs # see `site.collections`
+      type: tabs
     values:
       layout: page
       permalink: /:title/
-
-sass:
-  style: compressed
-
-compress_html:
-  clippings: all
-  comments: all
-  endings: all
-  profile: false
-  blanklines: false
-  ignore:
-    envs: [development]
-
-exclude:
-  - "*.gem"
-  - "*.gemspec"
-  - docs
-  - tools
-  - README.md
-  - LICENSE
-  - purgecss.js
-  - rollup.config.js
-  - "package*.json"
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: page
 
 jekyll-archives:
-  enabled: [categories, tags]
+  enabled: [tags, categories]
   layouts:
-    category: category
     tag: tag
+    category: category
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
+
+sass:
+  style: compressed
+  sass_dir: _sass
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - node_modules
+  - README.md
+  - LICENSE
+  - tools
+  - test-lottie.html
+  - "*.gem"
+  - "*.gemspec"
+
+giscus:
+  repo: Kheims/kheims.github.io
+  repo_id: R_kgDONvWGnQ
+  category: General
+  category_id: DIC_kwDONvWGnc4C5keW

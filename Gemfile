@@ -2,7 +2,12 @@
 
 source "https://rubygems.org"
 
-gem "jekyll-theme-chirpy", "~> 7.2", ">= 7.2.4"
+gem "jekyll", "~> 4.3"
+gem "jekyll-archives", "~> 2.3"
+gem "jekyll-sitemap", "~> 1.4"
+gem "jekyll-seo-tag", "~> 2.8"
+gem "jekyll-paginate", "~> 1.1"
+gem "jekyll-feed", "~> 0.17"
 
 gem "html-proofer", "~> 5.0", group: :test
 
@@ -13,6 +18,6 @@ end
 
 gem "wdm", "~> 0.2.0", :platforms => [:mingw, :x64_mingw, :mswin]
 
-gem 'csv'
-gem 'logger'
-gem 'base64'
+gem "csv"
+gem "logger"
+gem "base64"
