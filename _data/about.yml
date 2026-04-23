@@ -1,0 +1,10 @@
+facts:
+  - k: Based in
+    v: Paris, France
+  - k: PhD
+    v: Paris-Saclay / ISEP, 2023–2026
+  - k: Lab
+    v: LISITE / Adservio
+  - k: Languages
+    v: AR · FR · EN
+cv: # put /assets/cv.pdf here when ready

@@ -1,0 +1,27 @@
+- year: 2025
+  title: "Leveraging Prompt-Based Large Language Models for Code Smell Detection: A Comparative Study on the MLCQ Dataset"
+  authors: "D. Mesbah, et al."
+  venue: "EIDWT 2025, Matsue, Japan. Springer LNDECT."
+  note: "Best Paper"
+  links:
+    # - { label: pdf, url: "#" }
+    # - { label: bib, url: "#" }
+    # - { label: code, url: "#" }
+
+- year: 2025
+  title: "Exploring NLP Techniques for Code Smell Detection: A Comparative Study"
+  authors: "D. Mesbah, et al."
+  venue: "AINA 2025, Barcelona. Springer LNDECT vol. 247, pp. 93–104."
+  links:
+
+- year: 2024
+  title: "Beyond the Code: Unraveling the Applicability of Graph Neural Networks in Smell Detection"
+  authors: "D. Mesbah, et al."
+  venue: "NBiS 2024. Springer LNDECT, pp. 148–161."
+  links:
+
+- year: 2024
+  title: "Addressing Security Challenges in Copyright Management Applications: The Blockchain Perspective"
+  authors: "D. Mesbah, et al."
+  venue: "AINA 2024, Kitakyushu, Japan. Springer, pp. 169–182."
+  links:

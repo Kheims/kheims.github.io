@@ -1,23 +1,25 @@
 ---
-# the default layout is 'page'
-icon: fas fa-info-circle
+layout: about
+title: About
+nav: about
 order: 4
+permalink: /about/
 ---
 
+I'm Djamel, a CIFRE PhD candidate splitting time between [Paris-Saclay](https://www.universite-paris-saclay.fr), [ISEP](https://www.isep.fr), and [Adservio](https://www.adservio.fr). My thesis is on *automated code quality assessment via collaborative AI* — training and benchmarking deep models (LSTM, GNN, CodeBERT, and prompted LLMs) on code smell detection.
 
+Before the PhD I did an engineering degree in electronics at ENP Algiers, then an M.Sc. at Paris-Saclay on information processing and embedded systems. Somewhere along the way I got interested in PyTorch internals and distributed training — DDP, FSDP, ZeRO, pipeline and tensor parallelism — and kept pulling the thread.
 
+On the side, I'm a core contributor to [mlx-graphs](https://github.com/mlx-graphs/mlx-graphs), a GNN framework built on Apple MLX, and I'm contributing to PIDSMaker with UBC — a GNN-based intrusion detection framework that operates on system-level provenance graphs.
 
-Hey there! I’m a **PhD student** focused on detecting code smells with  **Deep Learning**. When I’m not buried in research papers, you’ll find me experimenting with new ways to **build** and **optimize** all sorts of tech—from orchestrating **data pipelines** to pushing **GPU computing** to its limits. 
+I also do regtech consulting where I've been rebuilding an APRA regulatory reporting pipeline on DuckLake and Terraform. Fintech pays for the GPUs.
 
-## My Work
+## Teaching
 
-- **Code Smell Detection**: Using Neural Networks and Graph Neural Networks to spot those  anti-patterns that creep into codebases.  
-- **ML Systems**: I geek out over data movement, pipeline architecture, and pretty much anything that makes machine learning more scalable (and fun).
-- **Compilers**: I am currently trying to deep dive into compilers intricacies.
+At ISEP I teach *Object-Oriented Programming in Python* (30h, own course materials). At Paris-Saclay, *Modular Programming in C++* and *Databases*.
 
-## What You’ll Find Here
+## Elsewhere
 
-- **Research Insights**: Thoughts on code quality, ML techniques, and whatever new rabbit hole my PhD journey leads me down.  
-- **Project Demos**: Showcasing tools, prototypes, and experiments that (hopefully) make your life a bit easier.  
+Off-screen I train Jiu-Jitsu, hike, read too much fiction, and dip in and out of competitive programming. I speak Arabic, French, and English.
 
-Thanks for stopping by. If you share my obsession with machine learning, building things and making code a little less smelly, let’s connect !
+Best way to reach me is [email](mailto:djamelmesbah141@gmail.com). I'm slow on social.

@@ -1,0 +1,42 @@
+- name: mlx-graphs
+  url: https://github.com/mlx-graphs/mlx-graphs
+  status: active
+  tag: open source
+  featured: true
+  blurb: >-
+    A GNN framework built on Apple MLX. Core contributor since the early days —
+    graph convolutions, message passing, inference. Used on Apple silicon for
+    fast iteration.
+  stack: [MLX, Python, GNN]
+
+- name: DETECT
+  url: https://github.com/Kheims
+  status: active
+  tag: phd
+  featured: true
+  blurb: >-
+    Thesis codebase. LSTM, BiLSTM+Attention, GNN, and CodeBERT benchmarks on
+    token-based and AST-graph-based code quality datasets. Distributed
+    multi-GPU training with W&B.
+  stack: [PyTorch, Transformers, W&B, DDP]
+
+- name: PIDSMaker
+  url: "#"
+  status: contributing
+  tag: research
+  featured: true
+  blurb: >-
+    GNN-based intrusion detection framework operating on system-level
+    provenance graphs. Improving node representations and analyzing the signals
+    GNN models exploit for APT attack detection. Collaboration with UBC.
+  stack: [PyTorch, GNN, security]
+
+- name: APRA reporting pipeline
+  url: "#"
+  status: production
+  tag: consulting
+  blurb: >-
+    Regtech — deterministic, auditable regulatory reporting pipeline on
+    DuckLake (Parquet on S3 + Postgres catalog) with native time-travel. Infra
+    as code via Terraform on AWS.
+  stack: [Python, FastAPI, DuckLake, Terraform]

@@ -3,7 +3,11 @@ layout: post
 title: "Nbdistributed – Distributed Training Without Losing Your Sanity"
 date: 2025-09-09 10:00:00 +0200
 categories: [distributed, pytorch, llms]
+tags: [distributed-training, pytorch, collective-ops, nccl, tutorial]
+series: "Distributed Training in PyTorch"
 ---
+
+> 📚 **Part 1 of the Distributed Training series** — Next up: [Distributed Data Parallelism, a gentle intro](/posts/ddp/)
 
 # Nbdistributed - Introduction and Basic Operations
 
@@ -125,7 +129,7 @@ Rank 1’s tensor received Rank 0’s tensor.
 
 ### 3. Scatter (One → Many)
 
-Splits a tensor into chunks and distributes each chunk to a different ra
+Splits a tensor into chunks and distributes each chunk to a different rank.
 
 ![image.png](/assets/img/nbdistributed/image%203.png)
 
