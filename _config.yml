@@ -85,5 +85,5 @@ exclude:
 giscus:
   repo: Kheims/kheims.github.io
   repo_id: R_kgDONvWGnQ
-  category: General
-  category_id: DIC_kwDONvWGnc4C5keW
+  category: Blog comments
+  category_id: DIC_kwDONvWGnc4C7hkg
