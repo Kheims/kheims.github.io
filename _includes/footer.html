@@ -1,0 +1,10 @@
+<footer class="site-footer">
+  <span>© {{ 'now' | date: '%Y' }} {{ site.author.name }}</span>
+  <span class="links">
+    {% if site.social.github %}<a href="https://github.com/{{ site.social.github }}">github</a>{% endif %}
+    {% if site.social.scholar %}<a href="{{ site.social.scholar }}">scholar</a>{% endif %}
+    {% if site.social.linkedin %}<a href="https://www.linkedin.com/in/{{ site.social.linkedin }}">linkedin</a>{% endif %}
+    <a href="{{ '/feed.xml' | relative_url }}">rss</a>
+    {% if site.social.email %}<a href="mailto:{{ site.social.email }}">email</a>{% endif %}
+  </span>
+</footer>

@@ -1,0 +1,12 @@
+{%- comment -%}
+  siboehm-style sidenote, purely inline (no block elements inside paragraphs).
+
+  Usage from markdown:
+    Some claim{% include sn.html n=1 text="Footnote body. **Markdown** works." %}.
+
+  Wide screens: the .sn-wide span is floated into the right gutter.
+  Narrow screens: the .sn-inline span toggles open via :target (click the ref).
+{%- endcomment -%}
+{%- assign n = include.n -%}
+{%- assign body = include.text | markdownify | remove_first: '<p>' | replace_first: '</p>', '' -%}
+<a href="#sn-i-{{ n }}" class="sn-ref" id="sn-ref-{{ n }}">{{ n }}</a><span class="sn-wide" id="sn-{{ n }}"><span class="n">{{ n }}.</span>{{ body }}</span><span class="sn-inline" id="sn-i-{{ n }}"><span class="sn-inline-body"><span class="n">{{ n }}.</span> {{ body }}</span></span>{%- comment -%}no trailing whitespace{%- endcomment -%}

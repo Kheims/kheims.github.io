@@ -1,0 +1,40 @@
+---
+layout: default
+---
+<div class="page-container">
+  {% include nav.html %}
+
+  <header class="page-header">
+    <h1>{{ page.title }}</h1>
+    {% if page.subtitle %}<p>{{ page.subtitle | markdownify | remove: '<p>' | remove: '</p>' }}</p>{% endif %}
+  </header>
+
+  {% assign all_tags = site.posts | map: 'tags' | join: ',' | split: ',' | uniq | sort %}
+  <div class="tag-filter">
+    <span class="active">all</span>
+    {% for t in all_tags %}
+      {% if t != "" %}<a href="{{ '/tags/' | append: t | append: '/' | relative_url }}">{{ t }}</a>{% endif %}
+    {% endfor %}
+  </div>
+
+  {% assign posts_by_year = site.posts | group_by_exp: "p", "p.date | date: '%Y'" %}
+  {% for year in posts_by_year %}
+    <section class="year-group">
+      <h2>{{ year.name }}</h2>
+      {% for post in year.items %}
+        <div class="year-row">
+          <span class="date">{{ post.date | date: "%m-%d" }}</span>
+          <div>
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            {% if post.tags and post.tags.size > 0 %}
+              <div class="tags">{{ post.tags | join: " · " }}</div>
+            {% endif %}
+          </div>
+          <span class="read">{% if post.read_time %}{{ post.read_time }}{% endif %}</span>
+        </div>
+      {% endfor %}
+    </section>
+  {% endfor %}
+
+  {% include footer.html %}
+</div>

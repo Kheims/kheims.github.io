@@ -1,0 +1,43 @@
+---
+layout: default
+---
+<div class="page-container" style="max-width: 820px;">
+  {% include nav.html %}
+
+  <header class="page-header">
+    <h1>{{ page.title }}</h1>
+  </header>
+
+  <div class="about-grid">
+    <article>
+      {{ content }}
+    </article>
+    <aside>
+      {% if site.author.portrait %}
+        <img class="portrait" src="{{ site.author.portrait }}" alt="{{ site.author.name }}">
+      {% else %}
+        <div class="portrait"></div>
+      {% endif %}
+
+      {% if site.data.about.facts %}
+      <div style="margin-top: 24px;">
+        {% for f in site.data.about.facts %}
+          <div class="kv"><span class="k">{{ f.k }}</span><span class="v">{{ f.v }}</span></div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <div style="margin-top: 28px;">
+        <div class="kicker" style="margin-bottom: 10px;">Links</div>
+        <ul>
+          {% if site.social.github %}<li><a href="https://github.com/{{ site.social.github }}">GitHub →</a></li>{% endif %}
+          {% if site.social.scholar %}<li><a href="{{ site.social.scholar }}">Google Scholar →</a></li>{% endif %}
+          {% if site.social.linkedin %}<li><a href="https://www.linkedin.com/in/{{ site.social.linkedin }}">LinkedIn →</a></li>{% endif %}
+          {% if site.data.about.cv %}<li><a href="{{ site.data.about.cv }}">CV (pdf) →</a></li>{% endif %}
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+  {% include footer.html %}
+</div>

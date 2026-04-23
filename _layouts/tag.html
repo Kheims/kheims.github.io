@@ -1,0 +1,25 @@
+---
+layout: default
+---
+<div class="page-container">
+  {% include nav.html %}
+  <header class="page-header">
+    <h1>Tag · {{ page.title }}</h1>
+    <p>{{ page.posts.size }} post{% if page.posts.size != 1 %}s{% endif %}</p>
+  </header>
+  <section class="year-group">
+    {% for post in page.posts %}
+      <div class="year-row">
+        <span class="date">{{ post.date | date: "%Y-%m-%d" }}</span>
+        <div>
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          {% if post.tags and post.tags.size > 0 %}
+            <div class="tags">{{ post.tags | join: " · " }}</div>
+          {% endif %}
+        </div>
+        <span class="read">{% if post.read_time %}{{ post.read_time }}{% endif %}</span>
+      </div>
+    {% endfor %}
+  </section>
+  {% include footer.html %}
+</div>

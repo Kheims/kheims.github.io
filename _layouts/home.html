@@ -1,0 +1,51 @@
+---
+layout: default
+---
+<div class="page-container">
+  {% include nav.html %}
+
+  <header class="home-header">
+    <h1>{{ site.author.name }}</h1>
+    <div class="bio">{{ content }}</div>
+    <p class="contact">
+      {% if page.location %}{{ page.location }} · {% endif %}
+      {% if site.social.github %}<a href="https://github.com/{{ site.social.github }}">github</a>{% endif %}
+      {% if site.social.scholar %} · <a href="{{ site.social.scholar }}">scholar</a>{% endif %}
+      {% if site.social.email %} · <a href="mailto:{{ site.social.email }}">email</a>{% endif %}
+    </p>
+  </header>
+
+  <section class="home-section">
+    <h2 class="kicker">Writing</h2>
+    {% assign recent = site.posts | slice: 0, 5 %}
+    {% for post in recent %}
+      <div class="post-row">
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <span class="meta">
+          {{ post.date | date: "%Y-%m-%d" }}{% if post.read_time %} · {{ post.read_time }}{% endif %}
+        </span>
+      </div>
+    {% endfor %}
+    <div style="margin-top: 18px;" class="home-more">
+      <a href="{{ '/blog/' | relative_url }}">all posts →</a>
+    </div>
+  </section>
+
+  {% if site.data.projects %}
+  <section class="home-section">
+    <h2 class="kicker">Selected work</h2>
+    {% assign featured = site.data.projects | where: "featured", true %}
+    {% for p in featured %}
+      <div class="work-row">
+        <div class="head">
+          <a class="name" href="{{ p.url }}">{{ p.name }}</a>
+          <span class="tag">{{ p.tag }}</span>
+        </div>
+        <p class="desc">{{ p.blurb }}</p>
+      </div>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  {% include footer.html %}
+</div>

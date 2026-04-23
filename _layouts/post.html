@@ -1,0 +1,46 @@
+---
+layout: default
+---
+<div class="post-layout">
+  {% include nav.html %}
+
+  <header class="post-header">
+    <div class="meta">
+      {{ page.date | date: "%Y-%m-%d" }}
+      {% if page.read_time %} · {{ page.read_time }}{% endif %}
+      {% if page.tags and page.tags.size > 0 %}
+        · <span class="tags">{{ page.tags | join: ", " }}</span>
+      {% endif %}
+    </div>
+    <h1>{{ page.title }}</h1>
+    {% if page.lede %}<p class="lede">{{ page.lede }}</p>{% endif %}
+  </header>
+
+  <div class="post-body">
+    <article>
+      {{ content }}
+    </article>
+  </div>
+
+  {% if site.giscus.repo and page.comments != false %}
+  <section style="margin-top: 64px; max-width: var(--col-main);">
+    <script src="https://giscus.app/client.js"
+      data-repo="{{ site.giscus.repo }}"
+      data-repo-id="{{ site.giscus.repo_id }}"
+      data-category="{{ site.giscus.category }}"
+      data-category-id="{{ site.giscus.category_id }}"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="bottom"
+      data-theme="preferred_color_scheme"
+      data-lang="en"
+      crossorigin="anonymous"
+      async>
+    </script>
+  </section>
+  {% endif %}
+
+  {% include footer.html %}
+</div>

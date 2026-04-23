@@ -1,0 +1,613 @@
+---
+---
+// Design tokens — researcher blog. Warm paper, serif-first, muted academic red.
+
+:root {
+  --bg: #fbfaf7;
+  --paper: #f4f1ea;
+  --rule: #e8e5de;
+  --ink: #1a1a1a;
+  --ink2: #2a2a2a;
+  --muted: #6b6a66;
+  --faint: #a8a6a0;
+  --accent: oklch(0.48 0.14 25);
+  --accent-soft: oklch(0.92 0.04 25);
+  --code: #f1ede4;
+
+  --serif: "Newsreader", "Source Serif 4", "Source Serif Pro", Georgia, serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --col-main: 640px;
+  --col-side: 240px;
+  --col-gutter: 48px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #15140f;
+    --paper: #1d1b16;
+    --rule: #2a2824;
+    --ink: #ebe8df;
+    --ink2: #d5d2c8;
+    --muted: #8a867c;
+    --faint: #575550;
+    --accent: oklch(0.75 0.12 25);
+    --accent-soft: oklch(0.28 0.05 25);
+    --code: #1f1d18;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent-soft);
+}
+a:hover { border-bottom-color: var(--accent); }
+
+h1, h2, h3, h4 {
+  font-family: var(--serif);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+p { margin: 0 0 1.1em; }
+
+code {
+  font-family: var(--mono);
+  font-size: 0.88em;
+  background: var(--code);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+}
+
+pre {
+  background: var(--code);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 14px 16px;
+  overflow: auto;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ink2);
+  margin: 20px 0;
+}
+pre code {
+  background: none;
+  padding: 0;
+  font-size: inherit;
+}
+
+blockquote {
+  margin: 1.2em 0;
+  padding: 0.2em 0 0.2em 16px;
+  border-left: 3px solid var(--rule);
+  color: var(--muted);
+  font-style: italic;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 2em 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.sans  { font-family: var(--sans); }
+.mono  { font-family: var(--mono); }
+.serif { font-family: var(--serif); }
+
+// ---------- Container ----------
+.page-container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+// ---------- Nav ----------
+.site-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 28px 0 20px;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--sans);
+  font-size: 13px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.site-nav .brand {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--ink);
+  border-bottom: none;
+  letter-spacing: -0.01em;
+}
+.site-nav .links { display: flex; gap: 22px; flex-wrap: wrap; }
+.site-nav .links a {
+  color: var(--muted);
+  border-bottom: none;
+}
+.site-nav .links a.active,
+.site-nav .links a:hover {
+  color: var(--ink);
+}
+.site-nav .links a.active { font-weight: 500; }
+
+// ---------- Footer ----------
+.site-footer {
+  margin-top: 80px;
+  padding-top: 22px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--muted);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.site-footer a { color: var(--muted); border-bottom: none; }
+.site-footer a:hover { color: var(--ink); }
+.site-footer .links { display: flex; gap: 14px; }
+
+// ---------- Label (uppercase kicker) ----------
+.kicker {
+  font-family: var(--sans);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  font-weight: 500;
+  margin: 0 0 20px;
+}
+
+// ---------- Home ----------
+.home-header { padding: 60px 0 40px; }
+.home-header h1 {
+  font-size: 34px;
+  margin: 0 0 18px;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+.home-header .bio {
+  font-size: 17px;
+  color: var(--ink2);
+  line-height: 1.6;
+  max-width: 560px;
+}
+.home-header .bio p { margin: 0 0 0.8em; }
+.home-header .bio p:last-child { margin-bottom: 0; }
+.home-header .contact {
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 18px;
+}
+
+.post-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule);
+  align-items: baseline;
+  gap: 16px;
+}
+.post-row:last-child { border-bottom: none; }
+.post-row a {
+  font-size: 16px;
+  color: var(--ink);
+  border-bottom: none;
+}
+.post-row a:hover { color: var(--accent); }
+.post-row .meta {
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.home-section { margin-top: 56px; }
+.home-more a {
+  font-family: var(--sans);
+  font-size: 13px;
+}
+
+// Selected work card
+.work-row { padding: 14px 0; border-bottom: 1px solid var(--rule); }
+.work-row:last-child { border-bottom: none; }
+.work-row .head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px; flex-wrap: wrap; }
+.work-row .name { font-size: 15px; font-weight: 500; color: var(--ink); border-bottom: none; }
+.work-row .tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.work-row .desc { margin: 0; font-size: 14px; color: var(--ink2); }
+
+// ---------- Blog index ----------
+.blog-header { padding: 50px 0 30px; }
+.blog-header h1 { font-size: 28px; margin: 0 0 10px; }
+.blog-header p {
+  font-size: 15px;
+  color: var(--muted);
+  margin: 0;
+}
+
+.tag-filter {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  font-family: var(--sans);
+  font-size: 12px;
+}
+.tag-filter a, .tag-filter span {
+  padding: 4px 10px;
+  border-radius: 100px;
+  border: 1px solid var(--rule);
+  color: var(--ink2);
+  border-bottom: 1px solid var(--rule);
+}
+.tag-filter a.active, .tag-filter span.active {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+
+.year-group { margin-bottom: 36px; }
+.year-group h2 {
+  font-family: var(--sans);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  font-weight: 500;
+  margin: 0 0 12px;
+}
+.year-row {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  padding: 10px 0;
+  gap: 16px;
+  align-items: baseline;
+  border-bottom: 1px solid var(--rule);
+}
+.year-row:last-child { border-bottom: none; }
+.year-row .date {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--muted);
+}
+.year-row a { font-size: 15px; color: var(--ink); border-bottom: none; }
+.year-row a:hover { color: var(--accent); }
+.year-row .tags {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--faint);
+  margin-top: 3px;
+}
+.year-row .read {
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+// ---------- Post ----------
+// Post article has extra right padding equal to sidenote column + gutter.
+// Sidenotes float into that gutter from within the text flow.
+
+.post-layout {
+  max-width: calc(var(--col-main) + var(--col-side) + var(--col-gutter) + 48px);
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+.post-header {
+  padding: 48px 0 24px;
+  max-width: var(--col-main);
+}
+.post-header .meta {
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.post-header .meta .tags { color: var(--ink2); }
+.post-header h1 {
+  font-size: 36px;
+  margin: 0 0 14px;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+.post-header .lede {
+  font-size: 17px;
+  color: var(--muted);
+  line-height: 1.5;
+  font-style: italic;
+  margin: 0;
+}
+
+.post-body {
+  position: relative;
+  padding-right: calc(var(--col-side) + var(--col-gutter));
+  max-width: calc(var(--col-main) + var(--col-side) + var(--col-gutter));
+}
+.post-body > article {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--ink2);
+  max-width: var(--col-main);
+}
+.post-body > article h2 { font-size: 22px; margin: 36px 0 14px; }
+.post-body > article h3 { font-size: 19px; margin: 28px 0 12px; }
+.post-body > article ul, .post-body > article ol { padding-left: 20px; margin: 0 0 20px; }
+.post-body > article li { margin-bottom: 8px; }
+
+// Inline sidenote marker (superscript number in accent red).
+.sn-ref {
+  font-family: var(--sans);
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 600;
+  padding: 0 1px 0 2px;
+  vertical-align: super;
+  line-height: 0;
+  cursor: pointer;
+  border-bottom: none;
+  text-decoration: none;
+}
+.sn-ref:hover { color: var(--ink); }
+
+// Wide-screen sidenote: floats into the right gutter, aligned with its ref.
+.sn-wide {
+  float: right;
+  clear: right;
+  width: var(--col-side);
+  margin-right: calc(-1 * (var(--col-side) + var(--col-gutter)));
+  margin-top: 4px;
+  margin-bottom: 16px;
+  padding-left: 14px;
+  border-left: 2px solid var(--accent-soft);
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.55;
+  font-style: normal;
+  display: block;
+}
+.sn-wide .n {
+  color: var(--accent);
+  font-weight: 600;
+  margin-right: 6px;
+}
+
+// Narrow-screen inline expand via :target. Hidden on wide.
+.sn-inline { display: none; }
+
+@media (max-width: 960px) {
+  .post-layout { max-width: 720px; }
+  .post-body {
+    padding-right: 0;
+    max-width: 100%;
+  }
+  .sn-wide { display: none; }
+
+  // On narrow: sidenote is inline, hidden body, click ref to expand.
+  .sn-inline {
+    display: inline;
+  }
+  .sn-inline .sn-inline-body {
+    display: none;
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--muted);
+    background: var(--paper);
+    padding: 4px 8px;
+    border-radius: 3px;
+    margin: 0 2px;
+    border-left: 2px solid var(--accent-soft);
+  }
+  .sn-inline:target .sn-inline-body { display: inline; }
+  .sn-inline .n {
+    color: var(--accent);
+    font-weight: 600;
+    margin-right: 4px;
+  }
+}
+
+// Figures
+figure { margin: 24px 0; }
+figcaption {
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 8px;
+  text-align: center;
+}
+figcaption .label { color: var(--ink2); font-weight: 500; }
+
+// ---------- Page (generic) ----------
+.page-header { padding: 48px 0 28px; }
+.page-header h1 { font-size: 30px; margin: 0 0 12px; }
+.page-header p {
+  font-size: 15px;
+  color: var(--muted);
+  margin: 0;
+}
+
+// About two-column
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 48px;
+}
+.about-grid article {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink2);
+  min-width: 0;
+}
+.about-grid article h2 { font-size: 19px; margin: 36px 0 12px; }
+.about-grid aside {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--ink2);
+}
+.about-grid aside ul { padding: 0; margin: 0; list-style: none; line-height: 1.9; }
+.about-grid aside .portrait {
+  width: 100%;
+  aspect-ratio: 1;
+  background-image: repeating-linear-gradient(-45deg, #efece4 0 8px, #f7f4ed 8px 16px);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  margin-bottom: 24px;
+}
+.about-grid aside .kv {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 12.5px;
+}
+.about-grid aside .kv .k { color: var(--muted); }
+.about-grid aside .kv .v { color: var(--ink2); }
+
+@media (max-width: 720px) {
+  .about-grid { grid-template-columns: 1fr; }
+}
+
+// Publications
+.pub-item {
+  padding: 22px 0;
+  border-top: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 20px;
+}
+.pub-item .year {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--muted);
+  padding-top: 3px;
+}
+.pub-item h3 {
+  font-size: 17px;
+  margin: 0 0 6px;
+  line-height: 1.35;
+}
+.pub-item .authors { font-size: 14px; color: var(--ink2); margin: 0 0 4px; }
+.pub-item .venue { font-size: 13px; color: var(--muted); margin: 0 0 8px; font-style: italic; }
+.pub-item .links {
+  font-family: var(--sans);
+  font-size: 12px;
+  display: flex;
+  gap: 14px;
+}
+.pub-item .note {
+  display: inline-block;
+  margin-left: 10px;
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 1px 6px;
+  border-radius: 2px;
+  vertical-align: middle;
+}
+
+// Projects
+.proj-item {
+  padding: 22px 0;
+  border-top: 1px solid var(--rule);
+}
+.proj-item .head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+.proj-item h3 { font-size: 19px; margin: 0; }
+.proj-item h3 a { color: var(--ink); border-bottom: none; }
+.proj-item .status {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.proj-item .status .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 6px;
+  background: var(--muted);
+  display: inline-block;
+}
+.proj-item .status.active     .dot { background: var(--accent); }
+.proj-item .status.contributing .dot { background: #3a7a3a; }
+.proj-item .status.production .dot { background: #2e6aa0; }
+.proj-item .tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+.proj-item .blurb {
+  font-size: 15px;
+  color: var(--ink2);
+  margin: 0 0 10px;
+  line-height: 1.6;
+}
+.proj-item .stack {
+  font-family: var(--sans);
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.proj-item .stack span {
+  font-size: 11px;
+  color: var(--muted);
+  border: 1px solid var(--rule);
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+
+// ---------- Rouge syntax highlighting (light, warm paper) ----------
+.highlight { background: var(--code); }
+.highlight .c, .highlight .c1, .highlight .cm { color: #8a887f; font-style: italic; }
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp { color: #8b3a3a; font-weight: 500; }
+.highlight .s, .highlight .s1, .highlight .s2, .highlight .sx { color: #5e7a3a; }
+.highlight .n, .highlight .nn { color: var(--ink2); }
+.highlight .nf { color: #3a5e7a; }
+.highlight .mi, .highlight .mf { color: #8b5a3a; }
+.highlight .o { color: var(--muted); }
+.highlight .nb { color: #5a3a7a; }
