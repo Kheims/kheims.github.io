@@ -1,0 +1,10 @@
+---
+// Unnumbered note in the margin (a figure, a remark). On narrow screens the ⊕ symbol toggles it.
+const id = `mn-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<label class="marginnote-label sidenote-number" for={id} aria-label="Show margin note">⊕</label><input
+  type="checkbox"
+  id={id}
+  class="margin-toggle"
+/><span class="marginnote"><slot /></span>

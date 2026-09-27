@@ -1,0 +1,22 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostList from '../../components/PostList.astro';
+import { getPosts } from '../../posts';
+
+const posts = await getPosts();
+const years = [...new Set(posts.map((p) => p.data.date.getFullYear()))];
+---
+
+<Base title="Writing">
+  <h1 class="page-title">Writing</h1>
+  <p class="page-lede">Longer notes on things I build and study.</p>
+  {posts.length === 0 && <p class="empty">Nothing published yet.</p>}
+  {
+    years.map((year) => (
+      <section>
+        <h2 class="year">{year}</h2>
+        <PostList posts={posts.filter((p) => p.data.date.getFullYear() === year)} />
+      </section>
+    ))
+  }
+</Base>

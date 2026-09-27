@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { SITE } from '../site';
+
+const pubs = (await getCollection('publications')).map((p) => p.data);
+const years = [...new Set(pubs.map((p) => p.year))].sort((a, b) => b - a);
+const highlight = (authors: string) => authors.replace(SITE.author, `<strong>${SITE.author}</strong>`);
+---
+
+<Base title="Publications">
+  <h1 class="page-title">Publications</h1>
+  <p class="page-lede">Peer-reviewed papers. Full list on <a href={SITE.orcid}>ORCID</a>.</p>
+  {
+    years.map((year) => (
+      <section>
+        <h2 class="year">{year}</h2>
+        <ul class="entries">
+          {pubs
+            .filter((p) => p.year === year)
+            .map((p) => (
+              <li>
+                <span class="entry-title">{p.title}</span>
+                {p.note && <span class="award"> · {p.note}</span>}
+                <p class="entry-body" set:html={highlight(p.authors)} />
+                <p class="entry-meta">{p.venue}</p>
+                <div class="entry-links">
+                  {p.links.map((l) => (
+                    <a href={l.url}>{l.label}</a>
+                  ))}
+                </div>
+              </li>
+            ))}
+        </ul>
+      </section>
+    ))
+  }
+</Base>

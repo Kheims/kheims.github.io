@@ -1,0 +1,21 @@
+---
+// Figure for MDX posts. `wide` stretches it into the margin column.
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  src: ImageMetadata | string;
+  alt: string;
+  caption?: string;
+  wide?: boolean;
+  invert?: boolean;
+}
+
+const { src, alt, caption, wide = false, invert = true } = Astro.props;
+const cls = invert ? undefined : 'no-invert';
+---
+
+<figure class:list={[{ wide }]}>
+  {typeof src === 'string' ? <img src={src} alt={alt} class={cls} /> : <Image src={src} alt={alt} class={cls} />}
+  {caption && <figcaption set:html={caption} />}
+</figure>

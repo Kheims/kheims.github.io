@@ -1,43 +1,81 @@
-# Chirpy Starter
+# kheims.github.io
 
-[![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy)][gem]&nbsp;
-[![GitHub license](https://img.shields.io/github/license/cotes2020/chirpy-starter.svg?color=blue)][mit]
+Personal site and blog, built with [Astro](https://astro.build) and deployed to GitHub Pages on every push to `main`.
 
-When installing the [**Chirpy**][chirpy] theme through [RubyGems.org][gem], Jekyll can only read files in the folders
-`_data`, `_layouts`, `_includes`, `_sass` and `assets`, as well as a small part of options of the `_config.yml` file
-from the theme's gem. If you have ever installed this theme gem, you can use the command
-`bundle info --path jekyll-theme-chirpy` to locate these files.
+## Setup
 
-The Jekyll team claims that this is to leave the ball in the user’s court, but this also results in users not being
-able to enjoy the out-of-the-box experience when using feature-rich themes.
-
-To fully use all the features of **Chirpy**, you need to copy the other critical files from the theme's gem to your
-Jekyll site. The following is a list of targets:
-
-```shell
-.
-├── _config.yml
-├── _plugins
-├── _tabs
-└── index.html
+```sh
+npm install
+npm run dev        # http://localhost:4321, reloads on save
+npm run build      # production build into dist/
 ```
 
-To save you time, and also in case you lose some files while copying, we extract those files/configurations of the
-latest version of the **Chirpy** theme and the [CD][CD] workflow to here, so that you can start writing in minutes.
+## Writing a post
 
-## Usage
+```sh
+npm run new "Tiling a matmul kernel"          # Markdown post
+npm run new "Tiling a matmul kernel" -- --mdx # MDX post (can use components)
+```
 
-Check out the [theme's docs](https://github.com/cotes2020/jekyll-theme-chirpy/wiki).
+This creates `src/content/posts/tiling-a-matmul-kernel/index.md` with `draft: true`.
+Drafts show up in `npm run dev` only. Set `draft: false` and push to publish.
 
-## Contributing
+Front matter:
 
-This repository is automatically updated with new releases from the theme repository. If you encounter any issues or want to contribute to its improvement, please visit the [theme repository][chirpy] to provide feedback.
+```yaml
+title: "Tiling a matmul kernel"
+description: "One line shown in the post list and in link previews."
+date: 2026-09-27
+updated: 2026-10-02   # optional
+tags: [cuda, gpu]
+draft: false
+```
 
-## License
+`src/content/posts/writing-guide/index.mdx` is a draft showing every feature. Open it in `npm run dev` for a live reference.
 
-This work is published under [MIT][mit] License.
+### Sidenotes
 
-[gem]: https://rubygems.org/gems/jekyll-theme-chirpy
-[chirpy]: https://github.com/cotes2020/jekyll-theme-chirpy/
-[CD]: https://en.wikipedia.org/wiki/Continuous_deployment
-[mit]: https://github.com/cotes2020/chirpy-starter/blob/master/LICENSE
+Use normal Markdown footnotes. They are rendered in the right margin on wide screens and open on tap on phones.
+
+```md
+Shared memory is banked.[^banks]
+
+[^banks]: 32 banks of 4 bytes on recent NVIDIA GPUs.
+```
+
+In MDX posts, `<MarginNote>...</MarginNote>` adds an unnumbered note.
+
+### Math
+
+`$inline$` and `$$display$$`, rendered with KaTeX at build time.
+
+### Code
+
+Fenced blocks with a language (` ```python `, ` ```cuda `, ` ```cpp `...), highlighted with Shiki.
+
+### Figures
+
+Keep images in the post folder. An image alone on its line becomes a figure, and its title becomes the caption:
+
+```md
+![Tiled matmul](./tiling.svg "Each block loads one tile of A and B into shared memory.")
+```
+
+SVG line drawings are inverted in dark mode, so draw them black on a transparent background.
+In MDX posts, `<Figure src={img} alt="..." caption="..." wide />` extends a figure into the margin (import the image first: `import img from './tiling.svg'`).
+
+Drawing tools that export clean SVG: Excalidraw (also as an Obsidian plugin), draw.io, Figma. For plots, matplotlib with `plt.savefig("fig.svg", transparent=True)`.
+
+## Other pages
+
+| Page | Edit |
+| --- | --- |
+| Home intro | `src/pages/index.astro` |
+| About | `src/pages/about.md` |
+| Projects | `src/data/projects.yml` |
+| Publications | `src/data/publications.yml` |
+| Reading | `src/data/reading.yml` |
+| Nav, links | `src/site.ts` |
+| Colors, fonts, layout | `src/styles/global.css` (tokens at the top) |
+
+The previous Jekyll site, including unpublished drafts, is kept on the `archive/jekyll` branch.

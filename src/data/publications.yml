@@ -1,0 +1,37 @@
+- year: 2025
+  title: "Leveraging Prompt-Based Large Language Models for Code Smell Detection: A Comparative Study on the MLCQ Dataset"
+  authors: "Djamel Mesbah, Nour El Madhoun, Khaldoun Al Agha, Hani Chalouati"
+  venue: "EIDWT 2025, Matsue, Japan. Springer LNDECT."
+  note: "Best Paper"
+  links:
+    - { label: DOI, url: "https://doi.org/10.1007/978-3-031-86149-9_42" }
+    - { label: Springer, url: "https://link.springer.com/chapter/10.1007/978-3-031-86149-9_42" }
+    - { label: HAL, url: "https://hal.science/hal-04881949" }
+
+- year: 2025
+  title: "Exploring NLP Techniques for Code Smell Detection: A Comparative Study"
+  authors: "Djamel Mesbah, Nour El Madhoun, Khaldoun Al Agha, Hani Chalouati"
+  venue: "AINA 2025, Barcelona. Springer LNDECT vol. 247, pp. 93–104."
+  links:
+    - { label: DOI, url: "https://doi.org/10.1007/978-3-031-87769-8_9" }
+    - { label: Springer, url: "https://link.springer.com/chapter/10.1007/978-3-031-87769-8_9" }
+    - { label: HAL, url: "https://hal.science/hal-04881958" }
+    - { label: Code, url: "https://github.com/Kheims/MLCQ-Experiments" }
+
+- year: 2024
+  title: "Beyond the Code: Unraveling the Applicability of Graph Neural Networks in Smell Detection"
+  authors: "Djamel Mesbah, Nour El Madhoun, Khaldoun Al Agha, Hani Chalouati"
+  venue: "NBiS 2024. Springer LNDECT, pp. 148–161."
+  links:
+    - { label: DOI, url: "https://doi.org/10.1007/978-3-031-63717-9_12" }
+    - { label: Springer, url: "https://link.springer.com/chapter/10.1007/978-3-031-63717-9_12" }
+    - { label: HAL, url: "https://hal.science/hal-04703377" }
+
+- year: 2024
+  title: "Addressing Security Challenges in Copyright Management Applications: The Blockchain Perspective"
+  authors: "Nour El Madhoun, Badis Hammi, Sanae El Jaouhari, Djamel Mesbah, Elie Ahmadieh"
+  venue: "AINA 2024, Kitakyushu, Japan. Springer, pp. 169–182."
+  links:
+    - { label: DOI, url: "https://doi.org/10.1007/978-3-031-57916-5_13" }
+    - { label: Springer, url: "https://link.springer.com/chapter/10.1007/978-3-031-57916-5_13" }
+    - { label: HAL, url: "https://hal.science/hal-04690838" }

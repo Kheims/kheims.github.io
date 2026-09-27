@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 230" font-family="Georgia, serif" font-size="14">
+  <g fill="none" stroke="#222" stroke-width="1.4">
+    <rect x="20" y="30" width="170" height="170" rx="6"/>
+    <rect x="235" y="60" width="170" height="110" rx="6"/>
+    <rect x="450" y="85" width="170" height="60" rx="6"/>
+  </g>
+  <g fill="#a13d1f" fill-opacity="0.12" stroke="none">
+    <rect x="20" y="30" width="170" height="170" rx="6"/>
+  </g>
+  <g fill="#222" text-anchor="middle">
+    <text x="105" y="112">Global memory</text>
+    <text x="105" y="132" font-size="12" fill="#666">HBM, ~3 TB/s</text>
+    <text x="320" y="112">Shared memory</text>
+    <text x="320" y="132" font-size="12" fill="#666">per block, ~20 TB/s</text>
+    <text x="535" y="112">Registers</text>
+    <text x="535" y="130" font-size="12" fill="#666">per thread</text>
+  </g>
+  <g stroke="#222" stroke-width="1.2" fill="none" marker-end="url(#a)">
+    <path d="M195 115 H228"/>
+    <path d="M410 115 H443"/>
+  </g>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#222"/>
+    </marker>
+  </defs>
+</svg>

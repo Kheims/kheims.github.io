@@ -1,0 +1,15 @@
+# Curated papers, posts, talks, X threads, repositories, and other references.
+# See README.md for the full entry format.
+
+- title: "Inside NVIDIA GPUs: Anatomy of high performance matmul kernels"
+  url: "https://www.aleksagordic.com/blog/matmul"
+  kind: blog
+  source: "Aleksa Gordic"
+  authors: "Aleksa Gordic"
+  category: GPU kernels
+  tags: [cuda, gpu-architecture, matmul, tensor-cores, performance]
+  saved_on: 2026-06-16
+  note: >-
+    A deep dive into NVIDIA GPU architecture and high-performance matrix
+    multiplication, from memory hierarchy and PTX/SASS to warp tiling and
+    asynchronous tensor core pipelines.

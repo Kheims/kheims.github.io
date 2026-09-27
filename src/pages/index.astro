@@ -1,0 +1,44 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PostList from '../components/PostList.astro';
+import { getPosts } from '../posts';
+import { SITE } from '../site';
+
+const posts = (await getPosts()).slice(0, 8);
+const featured = (await getCollection('projects')).filter((p) => p.data.featured);
+---
+
+<Base>
+  <p class="intro">
+    I'm Djamel, a PhD candidate at Paris-Saclay working on deep learning for code quality. I write here about what I
+    build and learn: distributed training, GPU kernels and ML systems.
+  </p>
+  <p class="intro-links">
+    <a href="/about/">About</a>
+    <a href={SITE.github}>GitHub</a>
+    <a href={SITE.orcid}>ORCID</a>
+    <a href={`mailto:${SITE.email}`}>Email</a>
+  </p>
+
+  <h2 class="section-label">Writing</h2>
+  {posts.length ? <PostList posts={posts} /> : <p class="empty">First post coming soon.</p>}
+
+  {
+    featured.length > 0 && (
+      <>
+        <h2 class="section-label">Projects</h2>
+        <ul class="entries">
+          {featured.map(({ data }) => (
+            <li>
+              <a class="entry-title" href={data.url}>
+                {data.name}
+              </a>
+              <p class="entry-body">{data.blurb}</p>
+            </li>
+          ))}
+        </ul>
+      </>
+    )
+  }
+</Base>

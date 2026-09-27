@@ -1,0 +1,26 @@
+---
+// Layout for plain Markdown pages in src/pages (e.g. about.md).
+import Base from './Base.astro';
+
+const { frontmatter } = Astro.props;
+const facts: [string, string][] = frontmatter.facts ?? [];
+---
+
+<Base title={frontmatter.title} description={frontmatter.description}>
+  <h1 class="page-title">{frontmatter.title}</h1>
+  {
+    facts.length > 0 && (
+      <dl class="facts">
+        {facts.map(([k, v]) => (
+          <>
+            <dt>{k}</dt>
+            <dd>{v}</dd>
+          </>
+        ))}
+      </dl>
+    )
+  }
+  <div class="prose">
+    <slot />
+  </div>
+</Base>

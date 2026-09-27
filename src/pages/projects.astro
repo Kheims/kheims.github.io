@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+
+const projects = await getCollection('projects');
+---
+
+<Base title="Projects">
+  <h1 class="page-title">Projects</h1>
+  <p class="page-lede">Code I maintain or contribute to.</p>
+  <ul class="entries">
+    {
+      projects.map(({ data }) => (
+        <li>
+          <a class="entry-title" href={data.url}>
+            {data.name}
+          </a>
+          {data.status && <span class="entry-meta"> · {data.status}</span>}
+          <p class="entry-body">{data.blurb}</p>
+          {data.stack.length > 0 && (
+            <div class="entry-links">
+              <span>
+                {data.stack.map((s) => (
+                  <span class="pill">{s}</span>
+                ))}
+              </span>
+            </div>
+          )}
+        </li>
+      ))
+    }
+  </ul>
+</Base>

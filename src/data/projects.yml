@@ -1,0 +1,32 @@
+- name: mlx-graphs
+  url: https://github.com/mlx-graphs/mlx-graphs
+  repo: https://github.com/mlx-graphs/mlx-graphs
+  status: contributing
+  tag: open source
+  featured: true
+  blurb: >-
+    A GNN framework built on Apple MLX. Contributing to graph convolutions,
+    message passing, and inference support for fast iteration on Apple silicon.
+  stack: [MLX, Python, GNN]
+
+- name: DETECT
+  url: https://github.com/Kheims/DETECT
+  repo: https://github.com/Kheims/DETECT
+  status: active
+  tag: phd
+  featured: true
+  blurb: >-
+    Thesis codebase. LSTM, BiLSTM+Attention, GNN, and CodeBERT benchmarks on
+    token-based and AST-graph-based code quality datasets. Distributed
+    multi-GPU training with W&B.
+  stack: [PyTorch, Transformers, W&B, DDP]
+
+- name: MLCQ Experiments
+  url: https://github.com/Kheims/MLCQ-Experiments
+  repo: https://github.com/Kheims/MLCQ-Experiments
+  status: research
+  tag: code smell
+  blurb: >-
+    Reproducible experiment code for code smell detection on the MLCQ dataset.
+    Baselines and analysis for comparing NLP representations and classifiers.
+  stack: [Python, NLP, code quality]

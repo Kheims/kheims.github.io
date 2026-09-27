@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+
+const items = (await getCollection('reading'))
+  .map((r) => r.data)
+  .sort((a, b) => b.saved_on.valueOf() - a.saved_on.valueOf());
+const categories = [...new Set(items.map((i) => i.category))];
+---
+
+<Base title="Reading">
+  <h1 class="page-title">Reading</h1>
+  <p class="page-lede">Papers, posts and talks worth coming back to.</p>
+  {
+    categories.map((category) => (
+      <section>
+        <h2 class="year">{category}</h2>
+        <ul class="entries">
+          {items
+            .filter((i) => i.category === category)
+            .map((i) => (
+              <li>
+                <a class="entry-title" href={i.url}>
+                  {i.title}
+                </a>
+                <span class="entry-meta">
+                  {' '}
+                  · {i.kind}
+                  {i.source && `, ${i.source}`}
+                </span>
+                {i.note && <p class="entry-body">{i.note}</p>}
+              </li>
+            ))}
+        </ul>
+      </section>
+    ))
+  }
+</Base>
