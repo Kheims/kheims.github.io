@@ -1,0 +1,67 @@
+<section class="moe-pixi" data-moe-pixi>
+  <div class="moe-pixi__intro">
+    <div>
+      <p class="moe-pixi__eyebrow">PixiJS prototype</p>
+      <h3>MoE dispatch as a live routing table</h3>
+      <p>
+        Tokens arrive as a batch, the gate scores experts, then dispatch packs
+        token copies into finite expert buffers.
+      </p>
+    </div>
+    <div class="moe-pixi__actions">
+      <button type="button" data-action="toggle">Pause</button>
+      <button type="button" data-action="reroll">New batch</button>
+    </div>
+  </div>
+
+  <div class="moe-pixi__stage" data-stage aria-label="PixiJS Mixture of Experts routing animation"></div>
+
+  <div class="moe-pixi__controls">
+    <label>
+      <span>Batch tokens</span>
+      <input type="range" min="24" max="128" step="8" value="64" data-control="tokens">
+      <output data-output="tokens">64</output>
+    </label>
+
+    <label>
+      <span>Experts</span>
+      <input type="range" min="4" max="12" step="1" value="8" data-control="experts">
+      <output data-output="experts">8</output>
+    </label>
+
+    <label>
+      <span>Routing</span>
+      <select data-control="topK">
+        <option value="1">top-1</option>
+        <option value="2" selected>top-2</option>
+      </select>
+    </label>
+
+    <label>
+      <span>Capacity factor</span>
+      <input type="range" min="0.70" max="1.60" step="0.05" value="1.00" data-control="capacity">
+      <output data-output="capacity">1.00</output>
+    </label>
+
+    <label>
+      <span>Router collapse</span>
+      <input type="range" min="0" max="1" step="0.05" value="0.25" data-control="collapse">
+      <output data-output="collapse">0.25</output>
+    </label>
+
+    <label>
+      <span>Balance loss</span>
+      <input type="range" min="0" max="1" step="0.05" value="0.45" data-control="balance">
+      <output data-output="balance">0.45</output>
+    </label>
+  </div>
+
+  <div class="moe-pixi__readout">
+    <div><strong data-stat="routed">0</strong><span>dispatches kept</span></div>
+    <div><strong data-stat="dropped">0</strong><span>overflow copies</span></div>
+    <div><strong data-stat="capacity">0</strong><span>slots / expert</span></div>
+    <div><strong data-stat="hotExpert">E0</strong><span>hottest expert</span></div>
+  </div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/pixi.js@7.4.2/dist/pixi.min.js" defer></script>
+<script src="{{ '/assets/js/interactives/moe-router-pixi.js' | relative_url }}" defer></script>

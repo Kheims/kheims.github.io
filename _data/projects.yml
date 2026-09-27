@@ -1,16 +1,17 @@
 - name: mlx-graphs
   url: https://github.com/mlx-graphs/mlx-graphs
-  status: active
+  repo: https://github.com/mlx-graphs/mlx-graphs
+  status: contributing
   tag: open source
   featured: true
   blurb: >-
-    A GNN framework built on Apple MLX. Core contributor since the early days —
-    graph convolutions, message passing, inference. Used on Apple silicon for
-    fast iteration.
+    A GNN framework built on Apple MLX. Contributing to graph convolutions,
+    message passing, and inference support for fast iteration on Apple silicon.
   stack: [MLX, Python, GNN]
 
 - name: DETECT
-  url: https://github.com/Kheims
+  url: https://github.com/Kheims/DETECT
+  repo: https://github.com/Kheims/DETECT
   status: active
   tag: phd
   featured: true
@@ -20,23 +21,12 @@
     multi-GPU training with W&B.
   stack: [PyTorch, Transformers, W&B, DDP]
 
-- name: PIDSMaker
-  url: "#"
-  status: contributing
-  tag: research
-  featured: true
+- name: MLCQ Experiments
+  url: https://github.com/Kheims/MLCQ-Experiments
+  repo: https://github.com/Kheims/MLCQ-Experiments
+  status: research
+  tag: code smell
   blurb: >-
-    GNN-based intrusion detection framework operating on system-level
-    provenance graphs. Improving node representations and analyzing the signals
-    GNN models exploit for APT attack detection. Collaboration with UBC.
-  stack: [PyTorch, GNN, security]
-
-- name: APRA reporting pipeline
-  url: "#"
-  status: production
-  tag: consulting
-  blurb: >-
-    Regtech — deterministic, auditable regulatory reporting pipeline on
-    DuckLake (Parquet on S3 + Postgres catalog) with native time-travel. Infra
-    as code via Terraform on AWS.
-  stack: [Python, FastAPI, DuckLake, Terraform]
+    Reproducible experiment code for code smell detection on the MLCQ dataset.
+    Baselines and analysis for comparing NLP representations and classifiers.
+  stack: [Python, NLP, code quality]

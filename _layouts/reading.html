@@ -1,0 +1,54 @@
+---
+layout: default
+---
+<div class="page-container" style="max-width: 760px;">
+  {% include nav.html %}
+
+  <header class="page-header">
+    <h1>{{ page.title }}</h1>
+    {% if page.subtitle %}<p>{{ page.subtitle }}</p>{% endif %}
+  </header>
+
+  {% assign readings = site.data.reading | sort: "saved_on" | reverse %}
+
+  {% if readings and readings.size > 0 %}
+    {% assign categories = readings | map: "category" | uniq | sort %}
+    <div class="reading-categories">
+      {% for category in categories %}
+        {% if category %}
+          <a href="#{{ category | slugify }}">{{ category }}</a>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {% assign grouped = readings | group_by: "category" | sort: "name" %}
+    {% for group in grouped %}
+      <section class="reading-group" id="{{ group.name | slugify }}">
+        <h2>{{ group.name }}</h2>
+        {% for item in group.items %}
+          <article class="reading-item">
+            <div class="reading-meta">
+              {% if item.kind %}<span>{{ item.kind }}</span>{% endif %}
+              {% if item.source %}<span>{{ item.source }}</span>{% endif %}
+              {% if item.saved_on %}<time datetime="{{ item.saved_on }}">{{ item.saved_on | date: "%Y-%m-%d" }}</time>{% endif %}
+            </div>
+
+            <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
+            {% if item.authors %}<p class="authors">{{ item.authors }}</p>{% endif %}
+            {% if item.note %}<p class="note">{{ item.note }}</p>{% endif %}
+
+            {% if item.tags and item.tags.size > 0 %}
+              <div class="reading-tags">
+                {% for tag in item.tags %}<span>{{ tag }}</span>{% endfor %}
+              </div>
+            {% endif %}
+          </article>
+        {% endfor %}
+      </section>
+    {% endfor %}
+  {% else %}
+    <p class="empty-state">Reading list coming soon.</p>
+  {% endif %}
+
+  {% include footer.html %}
+</div>

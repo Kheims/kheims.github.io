@@ -20,7 +20,10 @@ layout: default
     {% assign recent = site.posts | slice: 0, 5 %}
     {% for post in recent %}
       <div class="post-row">
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <div>
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          {% if post.lede %}<p class="lede">{{ post.lede }}</p>{% endif %}
+        </div>
         <span class="meta">
           {{ post.date | date: "%Y-%m-%d" }}{% if post.read_time %} · {{ post.read_time }}{% endif %}
         </span>
@@ -31,14 +34,40 @@ layout: default
     </div>
   </section>
 
+  {% if site.data.reading and site.data.reading.size > 0 %}
+  <section class="home-section">
+    <h2 class="kicker">Reading</h2>
+    {% assign recent_reading = site.data.reading | sort: "saved_on" | reverse | slice: 0, 4 %}
+    {% for item in recent_reading %}
+      <div class="reading-row">
+        <div>
+          <a href="{{ item.url }}">{{ item.title }}</a>
+          {% if item.note %}<p class="note">{{ item.note }}</p>{% endif %}
+        </div>
+        <span class="meta">
+          {{ item.kind }}{% if item.category %} · {{ item.category }}{% endif %}
+        </span>
+      </div>
+    {% endfor %}
+    <div style="margin-top: 18px;" class="home-more">
+      <a href="{{ '/reading/' | relative_url }}">reading list →</a>
+    </div>
+  </section>
+  {% endif %}
+
   {% if site.data.projects %}
   <section class="home-section">
     <h2 class="kicker">Selected work</h2>
     {% assign featured = site.data.projects | where: "featured", true %}
     {% for p in featured %}
       <div class="work-row">
+        {% assign primary_url = p.url | default: p.repo %}
         <div class="head">
-          <a class="name" href="{{ p.url }}">{{ p.name }}</a>
+          {% if primary_url and primary_url != "" %}
+            <a class="name" href="{{ primary_url }}">{{ p.name }}</a>
+          {% else %}
+            <span class="name">{{ p.name }}</span>
+          {% endif %}
           <span class="tag">{{ p.tag }}</span>
         </div>
         <p class="desc">{{ p.blurb }}</p>

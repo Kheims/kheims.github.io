@@ -1,0 +1,106 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "date"
+require "fileutils"
+require "optparse"
+
+options = {
+  categories: ["deep-dive"],
+  tags: [],
+  lede: "TODO: one clear sentence about the problem and why it matters.",
+  published: false,
+  type: "deep-dive"
+}
+
+parser = OptionParser.new do |opts|
+  opts.banner = "Usage: ruby tools/new-post \"Post title\" [options]"
+  opts.on("--date DATE", "Publication date, e.g. 2026-06-16") { |v| options[:date] = Date.parse(v) }
+  opts.on("--slug SLUG", "Override the generated URL slug") { |v| options[:slug] = v }
+  opts.on("--category NAME", "Add one category. Can be repeated.") { |v| (options[:categories] ||= []) << v }
+  opts.on("--tags TAGS", "Comma-separated tags") { |v| options[:tags] += v.split(",").map(&:strip).reject(&:empty?) }
+  opts.on("--series NAME", "Series name") { |v| options[:series] = v }
+  opts.on("--lede TEXT", "Short summary shown in indexes") { |v| options[:lede] = v }
+  opts.on("--type TYPE", "Post type label, default: deep-dive") { |v| options[:type] = v }
+  opts.on("--publish", "Create as published instead of hidden") { options[:published] = true }
+  opts.on("-h", "--help", "Show this help") do
+    puts opts
+    exit
+  end
+end
+
+parser.parse!
+
+title = ARGV.shift
+abort parser.to_s unless title
+
+date = options[:date] || Date.today
+slug = options[:slug] || title
+  .downcase
+  .unicode_normalize(:nfkd)
+  .encode("ascii", replace: "")
+  .gsub(/[^a-z0-9]+/, "-")
+  .gsub(/\A-|-+\z/, "")
+
+abort "Could not derive a slug from #{title.inspect}" if slug.empty?
+
+path = File.join("_posts", "#{date.strftime('%Y-%m-%d')}-#{slug}.md")
+abort "#{path} already exists" if File.exist?(path)
+
+time = Time.now.strftime("%H:%M:%S %z")
+
+front_matter = {
+  "title" => title,
+  "date" => "#{date.strftime('%Y-%m-%d')} #{time}",
+  "categories" => options[:categories].uniq,
+  "tags" => options[:tags].uniq,
+  "series" => options[:series],
+  "lede" => options[:lede],
+  "post_type" => options[:type],
+  "math" => false,
+  "comments" => true,
+  "published" => options[:published],
+  "repo" => nil,
+  "paper" => nil
+}.compact
+
+body = <<~MARKDOWN
+  ---
+  #{front_matter.map { |key, value| "#{key}: #{value.inspect}" }.join("\n")}
+  ---
+
+  ## TL;DR
+
+  TODO: state the result in two or three sentences.
+
+  ## Context
+
+  TODO: explain the problem, assumptions, and prior work.
+
+  ## Setup
+
+  TODO: list the environment, dataset, model, tooling, or minimal example.
+
+  ## Core Idea
+
+  TODO: unpack the concept before showing implementation details.
+
+  ## Walkthrough
+
+  TODO: move step by step. Prefer small code blocks with explanations between them.
+
+  ## Results
+
+  TODO: include measurements, failure modes, and trade-offs.
+
+  ## References
+
+  - TODO: paper, repository, documentation, or related post.
+MARKDOWN
+
+FileUtils.mkdir_p("_posts")
+File.write(path, body)
+
+puts "Created #{path}"
+puts "Preview hidden posts with: bundle exec jekyll serve --unpublished"
+puts "Publish by changing published: true"

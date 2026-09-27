@@ -12,3 +12,13 @@ Jekyll::Hooks.register :posts, :post_init do |post|
   end
 
 end
+
+Jekyll::Hooks.register :posts, :pre_render do |post|
+  next if post.data['read_time']
+
+  word_count = post.content.gsub(/```.*?```/m, " ").scan(/[[:word:]]+/).size
+  minutes = [(word_count / 220.0).ceil, 1].max
+
+  post.data['word_count'] = word_count
+  post.data['read_time'] = "#{minutes} min read"
+end

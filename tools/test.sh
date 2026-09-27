@@ -54,6 +54,8 @@ main() {
     rm -rf "$SITE_DIR"
   fi
 
+  bundle exec ruby tools/validate-content.rb
+
   read_baseurl
 
   # build

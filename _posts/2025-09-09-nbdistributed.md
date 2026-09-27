@@ -5,6 +5,7 @@ date: 2025-09-09 10:00:00 +0200
 categories: [distributed, pytorch, llms]
 tags: [distributed-training, pytorch, collective-ops, nccl, tutorial]
 series: "Distributed Training in PyTorch"
+lede: "A practical first pass through torch.distributed primitives from a notebook workflow, using nbdistributed to make multi-GPU experiments easier to iterate on."
 ---
 
 > 📚 **Part 1 of the Distributed Training series** — Next up: [Distributed Data Parallelism, a gentle intro](/posts/ddp/)

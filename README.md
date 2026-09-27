@@ -1,43 +1,121 @@
-# Chirpy Starter
+# kheims.github.io
 
-[![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy)][gem]&nbsp;
-[![GitHub license](https://img.shields.io/github/license/cotes2020/chirpy-starter.svg?color=blue)][mit]
+Personal research portfolio for Djamel Mesbah. The site is a small Jekyll app:
+posts live in `_posts`, projects in `_data/projects.yml`, publications in
+`_data/publications.yml`, reading-list entries in `_data/reading.yml`, and
+top-level pages in `_tabs`.
 
-When installing the [**Chirpy**][chirpy] theme through [RubyGems.org][gem], Jekyll can only read files in the folders
-`_data`, `_layouts`, `_includes`, `_sass` and `assets`, as well as a small part of options of the `_config.yml` file
-from the theme's gem. If you have ever installed this theme gem, you can use the command
-`bundle info --path jekyll-theme-chirpy` to locate these files.
+## Local workflow
 
-The Jekyll team claims that this is to leave the ball in the user’s court, but this also results in users not being
-able to enjoy the out-of-the-box experience when using feature-rich themes.
-
-To fully use all the features of **Chirpy**, you need to copy the other critical files from the theme's gem to your
-Jekyll site. The following is a list of targets:
-
-```shell
-.
-├── _config.yml
-├── _plugins
-├── _tabs
-└── index.html
+```sh
+bundle install
+bash tools/run.sh
 ```
 
-To save you time, and also in case you lose some files while copying, we extract those files/configurations of the
-latest version of the **Chirpy** theme and the [CD][CD] workflow to here, so that you can start writing in minutes.
+Production-style validation:
 
-## Usage
+```sh
+bash tools/test.sh
+```
 
-Check out the [theme's docs](https://github.com/cotes2020/jekyll-theme-chirpy/wiki).
+The test script validates the content data, builds the site, and runs
+html-proofer with external links disabled.
 
-## Contributing
+## Add a post
 
-This repository is automatically updated with new releases from the theme repository. If you encounter any issues or want to contribute to its improvement, please visit the [theme repository][chirpy] to provide feedback.
+Use the scaffold command:
 
-## License
+```sh
+ruby tools/new-post "How DDP Actually Synchronizes Gradients" \
+  --tags pytorch,distributed-training,ddp \
+  --series "Distributed Training in PyTorch"
+```
 
-This work is published under [MIT][mit] License.
+This creates a hidden post in `_posts` with `published: false`. Preview it with:
 
-[gem]: https://rubygems.org/gems/jekyll-theme-chirpy
-[chirpy]: https://github.com/cotes2020/jekyll-theme-chirpy/
-[CD]: https://en.wikipedia.org/wiki/Continuous_deployment
-[mit]: https://github.com/cotes2020/chirpy-starter/blob/master/LICENSE
+```sh
+bundle exec jekyll serve --unpublished
+```
+
+When the article is ready, change `published: true`.
+
+Recommended front matter:
+
+```yaml
+---
+title: "Post title"
+date: 2026-06-16 10:00:00 +0200
+categories: [deep-dive]
+tags: [pytorch, distributed-training]
+series: "Distributed Training in PyTorch"
+lede: "One sentence that says what the reader will learn."
+math: false
+comments: true
+repo: https://github.com/Kheims/example
+paper: https://doi.org/example
+published: true
+---
+```
+
+Use the generated sections as the article recipe: TL;DR, Context, Setup, Core
+Idea, Walkthrough, Results, and References.
+
+## Add a project
+
+Edit `_data/projects.yml`.
+
+```yaml
+- name: Project name
+  url: https://github.com/Kheims/project
+  repo: https://github.com/Kheims/project
+  status: active
+  tag: systems
+  featured: true
+  blurb: >-
+    Short concrete description of the problem, the approach, and why it matters.
+  stack: [Python, PyTorch, CUDA]
+```
+
+Set `featured: true` only for items that should appear on the homepage. For
+private consulting or collaboration work, omit `url` and `repo`, then add
+`visibility: private` or `visibility: collaboration`.
+
+## Add a publication
+
+Edit `_data/publications.yml`.
+
+```yaml
+- year: 2026
+  title: "Paper title"
+  authors: "Djamel Mesbah, Coauthor Name"
+  venue: "Conference or journal name."
+  note: "Best Paper"
+  links:
+    - { label: DOI, url: "https://doi.org/..." }
+    - { label: Code, url: "https://github.com/Kheims/..." }
+    - { label: HAL, url: "https://hal.science/..." }
+```
+
+## Add a reading-list item
+
+Edit `_data/reading.yml`. The list accepts papers, blogs, X threads, talks,
+repositories, or any other reference you want to keep public.
+
+```yaml
+- title: "Reference title"
+  url: "https://example.com/reference"
+  kind: paper
+  source: arXiv
+  authors: "Author One, Author Two"
+  category: ML systems
+  tags: [distributed-training, pytorch, scaling]
+  saved_on: 2026-06-16
+  note: >-
+    One short personal note about why this is worth reading or how it connects
+    to your work.
+```
+
+Useful `kind` values: `paper`, `blog`, `thread`, `talk`, `repo`, `docs`,
+`book`, `course`.
+
+Run `bash tools/test.sh` before pushing.

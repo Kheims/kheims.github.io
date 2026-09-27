@@ -26,6 +26,7 @@ layout: default
           <span class="date">{{ post.date | date: "%m-%d" }}</span>
           <div>
             <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            {% if post.lede %}<p class="lede">{{ post.lede }}</p>{% endif %}
             {% if post.tags and post.tags.size > 0 %}
               <div class="tags">{{ post.tags | join: " · " }}</div>
             {% endif %}

@@ -1,0 +1,63 @@
+<section class="moe-visual" data-moe-router>
+  <div class="moe-visual__header">
+    <div>
+      <p class="moe-visual__eyebrow">Interactive model</p>
+      <h3>Token routing through sparse experts</h3>
+    </div>
+    <button class="moe-visual__button" type="button" data-action="toggle" aria-pressed="true">Pause</button>
+  </div>
+
+  <div class="moe-visual__canvas-wrap">
+    <canvas class="moe-visual__canvas" width="960" height="560" role="img" aria-label="Animated Mixture of Experts router simulation"></canvas>
+  </div>
+
+  <div class="moe-visual__controls" aria-label="Mixture of Experts simulation controls">
+    <label>
+      <span>Tokens</span>
+      <input type="range" min="16" max="96" step="8" value="48" data-control="tokens">
+      <output data-output="tokens">48</output>
+    </label>
+
+    <label>
+      <span>Experts</span>
+      <input type="range" min="4" max="10" step="1" value="6" data-control="experts">
+      <output data-output="experts">6</output>
+    </label>
+
+    <label>
+      <span>Top-k</span>
+      <select data-control="topK">
+        <option value="1">top-1</option>
+        <option value="2" selected>top-2</option>
+      </select>
+    </label>
+
+    <label>
+      <span>Capacity factor</span>
+      <input type="range" min="0.75" max="1.50" step="0.05" value="1.00" data-control="capacity">
+      <output data-output="capacity">1.00</output>
+    </label>
+
+    <label>
+      <span>Balance pressure</span>
+      <input type="range" min="0" max="1" step="0.05" value="0.35" data-control="balance">
+      <output data-output="balance">0.35</output>
+    </label>
+
+    <button class="moe-visual__button" type="button" data-action="reroll">New batch</button>
+  </div>
+
+  <div class="moe-visual__stats" aria-live="polite">
+    <div><span data-stat="routed">0</span><small>routed tokens</small></div>
+    <div><span data-stat="dropped">0</span><small>dropped</small></div>
+    <div><span data-stat="capacity">0</span><small>capacity / expert</small></div>
+    <div><span data-stat="imbalance">0.00</span><small>imbalance</small></div>
+  </div>
+
+  <p class="moe-visual__caption">
+    Each dot is a token. The router scores experts, sends each token to its top-k
+    experts, then applies capacity. Balance pressure simulates the training
+    signal that discourages every token from collapsing onto the same expert.
+  </p>
+</section>
+<script src="{{ '/assets/js/interactives/moe-router.js' | relative_url }}" defer></script>

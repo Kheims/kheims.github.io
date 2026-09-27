@@ -21,7 +21,7 @@ layout: default
         <p class="venue">{{ p.venue }}</p>
         {% if p.links %}
           <div class="links">
-            {% for l in p.links %}<a href="{{ l.url }}">[{{ l.label }}]</a>{% endfor %}
+            {% for l in p.links %}<a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}
           </div>
         {% endif %}
       </div>

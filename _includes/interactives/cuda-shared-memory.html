@@ -1,0 +1,52 @@
+<section class="cuda-smem" data-cuda-smem>
+  <div class="cuda-smem__header">
+    <div>
+      <p class="cuda-smem__eyebrow">CUDA memory model</p>
+      <h3>From global memory to a block-local reduction</h3>
+      <p>
+        Step through a block reduction and inspect how threads use shared
+        memory as an explicitly managed scratchpad.
+      </p>
+    </div>
+    <button type="button" data-action="play">Play</button>
+  </div>
+
+  <div class="cuda-smem__stage">
+    <canvas width="960" height="620" aria-label="CUDA shared memory reduction visualization"></canvas>
+  </div>
+
+  <div class="cuda-smem__controls">
+    <label>
+      <span>Block size</span>
+      <select data-control="blockSize">
+        <option value="8">8 threads</option>
+        <option value="16" selected>16 threads</option>
+        <option value="32">32 threads</option>
+      </select>
+    </label>
+
+    <label>
+      <span>Step</span>
+      <input type="range" min="0" max="5" step="1" value="0" data-control="step">
+      <output data-output="step">load globals</output>
+    </label>
+
+    <label>
+      <span>Shared access pattern</span>
+      <select data-control="pattern">
+        <option value="contiguous" selected>contiguous</option>
+        <option value="stride2">stride 2</option>
+        <option value="stride4">stride 4</option>
+        <option value="broadcast">broadcast</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="cuda-smem__readout">
+    <div><strong data-stat="active">16</strong><span>active threads</span></div>
+    <div><strong data-stat="stride">-</strong><span>reduction stride</span></div>
+    <div><strong data-stat="banks">1-way</strong><span>bank pressure</span></div>
+    <div><strong data-stat="bytes">64 B</strong><span>shared memory</span></div>
+  </div>
+</section>
+<script src="{{ '/assets/js/interactives/cuda-shared-memory.js' | relative_url }}" defer></script>

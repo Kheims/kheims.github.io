@@ -11,8 +11,15 @@ layout: default
 
   {% for p in site.data.projects %}
     <article class="proj-item">
+      {% assign primary_url = p.url | default: p.repo %}
       <div class="head">
-        <h3><a href="{{ p.url }}">{{ p.name }}</a></h3>
+        <h3>
+          {% if primary_url and primary_url != "" %}
+            <a href="{{ primary_url }}">{{ p.name }}</a>
+          {% else %}
+            {{ p.name }}
+          {% endif %}
+        </h3>
         <span class="status {{ p.status }}">
           <span class="dot"></span>{{ p.status }}
         </span>
@@ -22,6 +29,12 @@ layout: default
       <div class="stack">
         {% for s in p.stack %}<span>{{ s }}</span>{% endfor %}
       </div>
+      {% if p.repo or p.links %}
+        <div class="project-links">
+          {% if p.repo %}<a href="{{ p.repo }}">GitHub</a>{% endif %}
+          {% for l in p.links %}<a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}
+        </div>
+      {% endif %}
     </article>
   {% endfor %}
 

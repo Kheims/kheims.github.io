@@ -2,7 +2,7 @@
 layout: about
 title: About
 nav: about
-order: 4
+order: 5
 permalink: /about/
 ---
 
@@ -10,9 +10,7 @@ I'm Djamel, a CIFRE PhD candidate splitting time between [Paris-Saclay](https://
 
 Before the PhD I did an engineering degree in electronics at ENP Algiers, then an M.Sc. at Paris-Saclay on information processing and embedded systems. Somewhere along the way I got interested in PyTorch internals and distributed training — DDP, FSDP, ZeRO, pipeline and tensor parallelism — and kept pulling the thread.
 
-On the side, I'm a core contributor to [mlx-graphs](https://github.com/mlx-graphs/mlx-graphs), a GNN framework built on Apple MLX, and I'm contributing to PIDSMaker with UBC — a GNN-based intrusion detection framework that operates on system-level provenance graphs.
-
-I also do regtech consulting where I've been rebuilding an APRA regulatory reporting pipeline on DuckLake and Terraform. Fintech pays for the GPUs.
+On the side, I contribute to [mlx-graphs](https://github.com/mlx-graphs/mlx-graphs), a GNN framework built on Apple MLX.
 
 ## Teaching
 

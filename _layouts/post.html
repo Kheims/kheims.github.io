@@ -7,6 +7,7 @@ layout: default
   <header class="post-header">
     <div class="meta">
       {{ page.date | date: "%Y-%m-%d" }}
+      {% if page.last_modified_at %} · updated {{ page.last_modified_at | date: "%Y-%m-%d" }}{% endif %}
       {% if page.read_time %} · {{ page.read_time }}{% endif %}
       {% if page.tags and page.tags.size > 0 %}
         · <span class="tags">{{ page.tags | join: ", " }}</span>
@@ -14,6 +15,13 @@ layout: default
     </div>
     <h1>{{ page.title }}</h1>
     {% if page.lede %}<p class="lede">{{ page.lede }}</p>{% endif %}
+    {% if page.series or page.repo or page.paper %}
+      <div class="post-context">
+        {% if page.series %}<span>Series: {{ page.series }}</span>{% endif %}
+        {% if page.repo %}<a href="{{ page.repo }}">GitHub</a>{% endif %}
+        {% if page.paper %}<a href="{{ page.paper }}">Paper</a>{% endif %}
+      </div>
+    {% endif %}
   </header>
 
   <div class="post-body">

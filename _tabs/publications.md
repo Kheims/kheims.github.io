@@ -2,7 +2,7 @@
 layout: publications
 title: Publications
 nav: publications
-order: 2
+order: 3
 permalink: /publications/
-subtitle: Also on [Google Scholar](https://scholar.google.com) · [dblp](https://dblp.org) · [ORCID](https://orcid.org).
+subtitle: "Papers, proceedings, and code artifacts. ORCID: [0009-0008-3589-5381](https://orcid.org/0009-0008-3589-5381)."
 ---
