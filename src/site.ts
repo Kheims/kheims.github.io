@@ -1,11 +1,12 @@
 export const SITE = {
   title: 'Djamel Mesbah',
   description:
-    'Notes on deep learning, distributed training, GPU programming and ML systems. PhD research on automated code quality assessment.',
+    'PhD candidate in AI at Paris-Saclay and ISEP, interested in code quality, inference engines and operating systems.',
   author: 'Djamel Mesbah',
   email: 'djamelmesbah141@gmail.com',
   github: 'https://github.com/Kheims',
   linkedin: 'https://www.linkedin.com/in/djamel-mesbah',
+  x: 'https://x.com/kheims_',
   orcid: 'https://orcid.org/0009-0008-3589-5381',
 };
 
