@@ -1,3 +1,10 @@
+- year: 2026
+  title: "A Survey on Code Smells Detection Using Machine Learning Techniques"
+  authors: "Djamel Mesbah, Nour El Madhoun, Khaldoun Al Agha, Anis Zouaoui"
+  venue: "Information and Software Technology, vol. 198, 108242. Elsevier."
+  links:
+    - { label: DOI, url: "https://doi.org/10.1016/j.infsof.2026.108242" }
+
 - year: 2025
   title: "Leveraging Prompt-Based Large Language Models for Code Smell Detection: A Comparative Study on the MLCQ Dataset"
   authors: "Djamel Mesbah, Nour El Madhoun, Khaldoun Al Agha, Hani Chalouati"
